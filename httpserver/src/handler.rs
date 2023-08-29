@@ -32,7 +32,7 @@ impl Handler for StaticPageHandler {
         let http::httprequest::Resource::Path(s) = &req.resource;
 
         // Parse the URI
-        let route: Vec<&str> = s.split("/").collect();
+        let route: Vec<&str> = s.split('/').collect();
 
         match route[1] {
             "" => HttpResponse::new("200", None, Self::load_file("index.html")),
@@ -82,7 +82,7 @@ impl Handler for WebServiceHandler {
         let http::httprequest::Resource::Path(s) = &req.resource;
 
         // Parse the URI
-        let route: Vec<&str> = s.split("/").collect();
+        let route: Vec<&str> = s.split('/').collect();
 
         // if route if /api/shipping/orders, return json
         match route[2] {

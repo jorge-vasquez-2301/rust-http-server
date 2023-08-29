@@ -13,6 +13,6 @@ fn main() {
         let mut buffer = [0; 1024];
 
         stream.read(&mut buffer).unwrap();
-        stream.write(&mut buffer).unwrap();
+        stream.write(&buffer).unwrap();
     }
 }

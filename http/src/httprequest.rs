@@ -63,11 +63,11 @@ impl From<String> for HttpRequest {
                 parsed_method = method;
                 parsed_version = version;
                 parsed_resource = resource;
-            } else if line.contains(":") {
+            } else if line.contains(':') {
                 // If the line read is header line, call function
                 let (key, value) = process_header_line(line);
                 parsed_headers.insert(key, value);
-            } else if line.len() == 0 { //  If it is blank line, do nothing
+            } else if line.is_empty() { //  If it is blank line, do nothing
             } else {
                 // If none of these, treat it as message body
                 parsed_msg_body = line;
@@ -106,7 +106,7 @@ fn process_req_line(s: &str) -> (Method, Resource, Version) {
 
 fn process_header_line(s: &str) -> (String, String) {
     // Parse the header line into words split by separator (':')
-    let mut header_items = s.split(":");
+    let mut header_items = s.split(':');
     let mut key = String::from("");
     let mut value = String::from("");
 

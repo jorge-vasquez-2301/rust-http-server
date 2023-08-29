@@ -4,13 +4,13 @@ use std::io::prelude::*;
 
 pub struct Router;
 impl Router {
-    pub fn route(req: HttpRequest, stream: &mut impl Write) -> () {
+    pub fn route(req: HttpRequest, stream: &mut impl Write) {
         match req.method {
             // If GET request
             httprequest::Method::Get => match &req.resource {
                 httprequest::Resource::Path(s) => {
                     // Parse the URI
-                    let route: Vec<&str> = s.split("/").collect();
+                    let route: Vec<&str> = s.split('/').collect();
 
                     match route[1] {
                         // if the route begins with /api, invoke Web service
